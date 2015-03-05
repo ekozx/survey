@@ -13,6 +13,9 @@ $active-color: #A0AAB6;
 }
 
 /* Navbar */
+.navbar {
+  margin-bottom: 0px !important;
+}
 nav.navbar.navbar-default {
   font-size: 18px;
   width: 100%;
@@ -46,6 +49,28 @@ nav.navbar.navbar-default {
 }
 
 /* Survey */
-.call-to-action {
+@media (max-width: 1200px) {
+  .welcome {
 
+  }
+}
+.welcome {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-image: image-url("DSCF4077.jpg")
+}
+.brand {
+  margin-top: 0px;
+  padding-left: 10%;
+  padding-top: 10%;
+}
+.hook {
+  padding-left: 10%;
+}
+.survey-key {
+  margin: 0;
+  display: inline !important;
+  width: 250px !important;
 }
