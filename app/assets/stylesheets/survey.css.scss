@@ -2,19 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Application wide */
 $navy-blue: #062342;
 $white: #ffffff;
 $active-color: #A0AAB6;
 
+.col-lg-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Navbar */
 nav.navbar.navbar-default {
   font-size: 18px;
   width: 100%;
   background-color: $navy-blue;
-  ul.nav {
-    float: right;
-    display: inline-block;
-    text-align: justify;
-  }
   li > a {
     color: $white;
     padding: 15px 15px 15px 15px;
@@ -30,4 +32,20 @@ nav.navbar.navbar-default {
   li > a:hover {
     color: $active-color !important;
   }
+  ul.nav {
+    float: right;
+  }
+  @media (max-width: 769px) {
+    ul.nav {
+      float: left;
+    }
+    li > a {
+      padding: 10px 30px 10px 30px;
+    }
+  }
+}
+
+/* Survey */
+.call-to-action {
+
 }
