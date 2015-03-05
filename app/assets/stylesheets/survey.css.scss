@@ -1,3 +1,33 @@
 // Place all the styles related to the survey controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$navy-blue: #062342;
+$white: #ffffff;
+$active-color: #A0AAB6;
+
+nav.navbar.navbar-default {
+  font-size: 18px;
+  width: 100%;
+  background-color: $navy-blue;
+  ul.nav {
+    float: right;
+    display: inline-block;
+    text-align: justify;
+  }
+  li > a {
+    color: $white;
+    padding: 15px 15px 15px 15px;
+  }
+  li.active > a {
+    color: $active-color;
+    background-color: $navy-blue !important;
+  }
+  .navbar-brand {
+    color: $white;
+    padding-left: 30px;
+  }
+  li > a:hover {
+    color: $active-color !important;
+  }
+}
