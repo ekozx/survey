@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 
 #Templating
 gem "haml-rails", "~> 0.8"
+
+#Devise
+gem 'devise'
