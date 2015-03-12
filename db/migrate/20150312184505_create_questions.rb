@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
-    drop_table :questions do |t|
-    end
+    # drop_table :questions do |t|
+    # end
     create_table :questions do |t|
       t.boolean :odh
       t.string :question
