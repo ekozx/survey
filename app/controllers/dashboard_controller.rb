@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
     if user_signed_in?
-      @organization = Organization.where(id: current_user.id).take
+      @organization = Organization.find(current_user.organization_id)
       @polls = @organization.polls
     else
       redirect_to '/'

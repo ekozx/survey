@@ -1,0 +1,7 @@
+%h1
+  Edit
+  = @poll.name
+
+- @poll.questions.each do |q|
+  %li
+    = q.question
