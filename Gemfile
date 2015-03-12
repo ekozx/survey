@@ -44,3 +44,4 @@ gem "haml-rails", "~> 0.8"
 
 #Devise
 gem 'devise'
+gem 'devise_invitable'
