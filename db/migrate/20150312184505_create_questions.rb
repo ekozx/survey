@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.boolean, :odh
       t.string :question
-      t.integer :poll_id
+      t.belongs_to :poll, index:true
 
       t.timestamps
     end
