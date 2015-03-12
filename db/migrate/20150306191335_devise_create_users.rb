@@ -1,5 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
+    drop_table :users do |t|
+    end
     create_table(:users) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -34,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :level, default: 0, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.integer :organization_id
+      t.belongs_to :organization, index: true, unique: true
 
       t.timestamps
     end
