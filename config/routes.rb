@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'survey#index'
-  resources :surveys
+  root 'polls#index'
+  resources :polls
   get 'dashboard', to: 'dashboard#index'
   devise_for :users, :path => '', :path_names => {:sign_in => 'dashboard#index', :sign_out => 'logout'}
   # Example of regular route:

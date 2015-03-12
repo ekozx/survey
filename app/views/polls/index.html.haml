@@ -1,0 +1,9 @@
+.welcome
+  %h1.brand Brand
+  %h3.hook Simple, anonymous nursing home surveys.
+  %h3.hook Enter your survey ID below:
+  =form_tag 'map', method: 'post', class: 'form-inline hook' do
+    .form-group
+      -# = label :survey, :name, 'Survey ID'
+      = text_field :id, 'ID', class: 'form-control survey-key'
+      = submit_tag 'Go', class: 'btn btn-success survey-go'
