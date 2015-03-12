@@ -1,5 +1,10 @@
 %h1
   = @poll.name
-- @poll.questions.each do |q|
+%h4 Poll-specific Questions
+- @questions.each do |q|
+  %li
+    = q.question
+%h4 ODH Questions
+- @odh_questions.each do |q|
   %li
     = q.question

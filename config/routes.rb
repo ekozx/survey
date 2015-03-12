@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'polls#index'
   resources :polls
+  resources :questions
   get 'dashboard', to: 'dashboard#index'
   devise_for :users, :path => '', :path_names => {:sign_in => 'dashboard#index', :sign_out => 'logout'}
   # Example of regular route:

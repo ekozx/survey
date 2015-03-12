@@ -2,6 +2,12 @@
   Edit
   = @poll.name
 
-- @poll.questions.each do |q|
+%h4 Poll-specific Questions
+- @questions.each do |q|
+  %li
+    = q.question
+    =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }
+%h4 ODH Questions
+- @odh_questions.each do |q|
   %li
     = q.question
