@@ -1,3 +1,18 @@
 // Place all the styles related to the polls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.edit-poll-header {
+margin-left: 10%;
+font-size: 28px;
+}
+.new-question {
+  margin-left: 10%;
+}
+.poll-questions {
+  list-style-type: none;
+  margin-left: 10%;
+}
+.question {
+  font-size: 19px;
+}

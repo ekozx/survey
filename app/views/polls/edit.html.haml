@@ -1,13 +1,24 @@
-%h1
-  Edit
-  = @poll.name
-
-%h4 Poll-specific Questions
-- @questions.each do |q|
-  %li
-    = q.question
-    =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }
-%h4 ODH Questions
-- @odh_questions.each do |q|
-  %li
-    = q.question
+.col-lg-4
+  %h4.edit-poll-header
+    = @poll.name
+  =form_for @question, remote: true, url: {controller: 'questions', action: 'create'} do |f|
+    %p.new-question
+      = f.hidden_field :odh, value: @question.odh
+      = f.hidden_field :poll, value: @question.poll_id
+      = f.label "Add a question"
+      %br
+      = f.text_field :question
+      = f.submit
+.col-lg-8
+  %h4.edit-poll-header Poll-specific Questions
+  %ul.poll-questions
+    - @questions.each do |q|
+      %li.question
+        = q.question
+        -# remote true not working?
+        =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }
+  %h4.edit-poll-header ODH Questions
+  %ul.poll-questions
+    - @odh_questions.each do |q|
+      %li.question
+        = q.question

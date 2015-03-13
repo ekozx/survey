@@ -5,7 +5,9 @@
     Hi
     = current_user.first_name
 
-  - @polls.each do |poll|
-    %li
-      =link_to poll.name, poll_path(poll)
-      =link_to "edit", edit_poll_path(poll)
+  .poll-listing
+    - @polls.each do |poll|
+      %li.poll-info
+        =link_to poll.name, poll_path(poll)
+        =link_to "Edit", edit_poll_path(poll)
+        =link_to "Analytics", '#'
