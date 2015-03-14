@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312193426) do
+ActiveRecord::Schema.define(version: 20150313223004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: true do |t|
+    t.integer  "question_id"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "poll_interval_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["poll_interval_id"], name: "index_categories_on_poll_interval_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -22,11 +40,23 @@ ActiveRecord::Schema.define(version: 20150312193426) do
     t.datetime "updated_at"
   end
 
+  create_table "poll_intervals", force: true do |t|
+    t.integer  "poll_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "poll_intervals", ["poll_id"], name: "index_poll_intervals_on_poll_id", using: :btree
+
   create_table "polls", force: true do |t|
     t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.boolean  "expired"
+    t.datetime "expiration_date"
   end
 
   add_index "polls", ["organization_id"], name: "index_polls_on_organization_id", using: :btree
@@ -34,12 +64,43 @@ ActiveRecord::Schema.define(version: 20150312193426) do
   create_table "questions", force: true do |t|
     t.boolean  "odh"
     t.string   "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "poll_intervals_id"
+  end
+
+  add_index "questions", ["poll_intervals_id"], name: "index_questions_on_poll_intervals_id", using: :btree
+
+  create_table "respondents", force: true do |t|
+    t.integer  "guardian_age"
+    t.integer  "resident_age"
+    t.boolean  "is_guardian"
+    t.boolean  "gender"
+    t.integer  "race"
+    t.integer  "relationship"
+    t.integer  "visit_frequency"
+    t.integer  "expected_stay"
+    t.boolean  "finished"
+    t.integer  "email"
+    t.string   "key"
+    t.integer  "poll_intervals_id"
+    t.integer  "organization_id"
     t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
+  add_index "respondents", ["organization_id"], name: "index_respondents_on_organization_id", using: :btree
+  add_index "respondents", ["poll_id"], name: "index_respondents_on_poll_id", using: :btree
+  add_index "respondents", ["poll_intervals_id"], name: "index_respondents_on_poll_intervals_id", using: :btree
+
+  create_table "respondents_answers", id: false, force: true do |t|
+    t.integer "respondents_id"
+    t.integer "answers_id"
+  end
+
+  add_index "respondents_answers", ["answers_id"], name: "index_respondents_answers_on_answers_id", using: :btree
+  add_index "respondents_answers", ["respondents_id"], name: "index_respondents_answers_on_respondents_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
