@@ -20,5 +20,10 @@ class CreateRespondents < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :respondents_answers, id: false do |t|
+      t.belongs_to :respondents, index: true
+      t.belongs_to :answers, index: true
+    end
   end
 end
