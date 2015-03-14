@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :organizaton
 
+  def organization_name
+    self.organization.name
+  end
 end
