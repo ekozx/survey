@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :organizaton
+  after_invitation_accepted :email_invited_by
 
   def organization_name
     self.organization.name
+  end
+
+  def email_invited_by
   end
 end

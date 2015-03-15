@@ -1,10 +1,7 @@
 %h1
   = @poll.name
-%h4 Poll-specific Questions
-- @questions.each do |q|
-  %li
-    = q.question
-%h4 ODH Questions
-- @odh_questions.each do |q|
-  %li
-    = q.question
+%h3 Poll iterations
+%ul
+  - @poll.poll_intervals.each do |interval|
+    %li
+      = @poll.name + interval.start
