@@ -45,6 +45,8 @@ Rails.application.configure do
     :port                 => 587,
     # :user_name            => ENV["MAIL_USERNAME"],
     # :password             => ENV["MAIL_PASSWORD"],
+    :user_name            => "nursingsurveymailer@gmail.com",
+    :password             => "mailingsolutions2015",
     :authentication       => "plain",
     :enable_starttls_auto => true,
     :openssl_verify_mode  => 'none'
