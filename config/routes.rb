@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :polls
   resources :questions
   get 'dashboard', to: 'dashboard#index'
-  devise_for :users, :path => '', :path_names => {:sign_in => 'dashboard#index', :sign_out => 'logout'}
+  devise_for :users, :path => '', :controllers => {:invitations => "registrations"},
+                                  :path_names => {:sign_in => 'dashboard#index', :sign_out => 'logout'}
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -4,6 +4,15 @@
   - resource.class.invite_key_fields.each do |field|
     %p
       = f.label field
-      %br/
       = f.text_field field
+  %p
+    = f.label "first name"
+    = f.text_field :first_name
+  %p
+    = f.label "last name"
+    = f.text_field :last_name
+  %p
+    = f.label "company id"
+    = f.text_field :organization_id, type: 'number'
+
   %p= f.submit t("devise.invitations.new.submit_button")
