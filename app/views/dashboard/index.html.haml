@@ -5,6 +5,11 @@
     Hi
     = current_user.first_name
 
+  %h3
+    =link_to "Invite a user", new_user_invitation_path
+  %h3
+    =link_to "Create a new poll", new_poll_path
+
   .poll-listing
     - @polls.each do |poll|
       %li.poll-info

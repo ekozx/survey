@@ -17,6 +17,7 @@ class PollsController < ApplicationController
     @questions = @poll.questions
     @odh_questions = Question.where(odh: true)
   end
-  def delete_question
+  def new
+    
   end
 end
