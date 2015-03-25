@@ -18,6 +18,7 @@ class PollsController < ApplicationController
     @odh_questions = Question.where(odh: true)
   end
   def new
+    @poll = Poll.new
     
   end
 end
