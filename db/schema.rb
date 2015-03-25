@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325174155) do
+ActiveRecord::Schema.define(version: 20150325181747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150325174155) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "odh"
+    t.boolean  "expired"
   end
 
   add_index "poll_intervals", ["poll_id"], name: "index_poll_intervals_on_poll_id", using: :btree
@@ -56,8 +57,6 @@ ActiveRecord::Schema.define(version: 20150325174155) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.boolean  "expired"
-    t.datetime "expiration_date"
   end
 
   add_index "polls", ["organization_id"], name: "index_polls_on_organization_id", using: :btree
