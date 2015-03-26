@@ -1,6 +1,19 @@
 %h1
   = @poll.name
 %h3 Poll iterations
+%h4 Start a new iteration
+=form_for @poll_interval, url: {controller: 'poll_intervals', action: 'create'} do |f|
+  %p
+  =f.hidden_field :expired, value: false
+  =f.hidden_field :poll_id, value: @poll_interval.poll_id
+  =f.label "ODH questions?"
+  =f.check_box :odh
+  %br
+  = select_date Date.today, prefix: :start
+  %br
+  = select_date Date.today, prefix: :end
+  %br
+  = f.submit
 %ul
   - @poll.poll_intervals.each do |interval|
     %li
