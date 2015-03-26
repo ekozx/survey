@@ -1,0 +1,2 @@
+class PollIntervalsController < ApplicationController
+end

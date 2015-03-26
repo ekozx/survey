@@ -6,6 +6,12 @@ class PollsController < ApplicationController
     @questions = @poll.questions
     @odh_questions = Question.where(odh: true)
   end
+  def destroy
+    #Poll.destroy matters here over delete because destroy will kill child records
+    #i.e. PollIntervals associated with this poll.
+    Poll.destroy(params[:id])
+    render nothing: true
+  end
   def edit
     #Generating a new question
     @question = Question.new
@@ -18,7 +24,13 @@ class PollsController < ApplicationController
     @odh_questions = Question.where(odh: true)
   end
   def new
-    @poll = Poll.new
-    
+  end
+  def create
+    Poll.create(poll_params)
+    render nothing: true
+  end
+  protected
+  def poll_params
+    params.require(:poll).permit(:name, :organization_id)
   end
 end

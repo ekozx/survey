@@ -7,12 +7,19 @@
 
   %h3
     =link_to "Invite a user", new_user_invitation_path
-  %h3
-    =link_to "Create a new poll", new_poll_path
+  %h1 new poll
+  =form_for @poll, remote: true, url: {controller: 'polls', action: 'create'} do |f|
+    %p
+      =f.hidden_field :organization_id, value: @poll.organization_id
+      =f.label "Poll Name:"
+      =f.text_field :name
+    = f.submit
 
   .poll-listing
     - @polls.each do |poll|
       %li.poll-info
         =link_to poll.name, poll_path(poll)
-        =link_to "Edit", edit_poll_path(poll)
+        -# this needs done
+        =link_to "Edit Name"
         =link_to "Analytics", '#'
+        =link_to "Delete", poll_path(poll), remote: true, method: :delete, data: { confirm: "Are you sure?" }

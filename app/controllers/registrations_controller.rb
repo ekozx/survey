@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::InvitationsController
-  before_filter :update_resource_params
+  # before_filter :update_resource_params
   #pretty sure I'll want this, but it's untested
   before_filter :authenticate_user!
 
