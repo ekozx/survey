@@ -17,4 +17,5 @@
 %ul
   - @poll.poll_intervals.each do |interval|
     %li
-      = @poll.name + interval.start
+      =link_to @poll.name + " between " + interval.start.strftime("%m/%d/%Y") |
+        + " and  " + interval.end.strftime("%m/%d/%Y"), poll_interval_path(interval) |
