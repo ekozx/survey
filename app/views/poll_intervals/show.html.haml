@@ -1,4 +1,27 @@
 %h1 hi
 
-%h1
-  = @interval.questions
+- unless current_user.blank?
+  =form_for @question, remote: true, url: {controller: 'questions', action: 'create'} do |f|
+    %p
+      = f.hidden_field :odh, value: @question.odh
+      = f.hidden_field :poll_interval_id, value: @question.poll_interval_id
+      = f.label "Add a question"
+      %br
+      = f.text_field :question
+      = f.submit
+
+%ul
+  - if @interval.odh
+    %h4 ODH questions
+    - @odh_questions.each do |q|
+      %li
+        = q.question
+    %h4 Non-ODH questions
+  - else
+    %h4 Questions
+
+%ul
+  - @questions.each do |q|
+    %li
+      = q.question
+      =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }
