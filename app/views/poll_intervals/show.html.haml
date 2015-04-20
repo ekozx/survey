@@ -1,4 +1,7 @@
-%h1 hi
+%h1= @poll.name
+
+- unless current_user.blank?
+  =link_to "Back to poll intervals", poll_path(@interval.poll_id)
 
 - unless current_user.blank?
   =form_for @question, remote: true, url: {controller: 'questions', action: 'create'} do |f|
@@ -24,4 +27,5 @@
   - @questions.each do |q|
     %li
       = q.question
-      =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }
+      - unless current_user.blank?
+        =link_to "Delete", q, class: 'delete-question', remote: true, method: :delete, data: { confirm: "Are you sure?" }

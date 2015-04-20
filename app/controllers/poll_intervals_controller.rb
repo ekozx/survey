@@ -19,6 +19,7 @@ class PollIntervalsController < ApplicationController
   end
   def show
     @interval = PollInterval.find(params[:id])
+    @poll = Poll.find(@interval.poll_id)
     # creating a new question for admins
     @question = Question.new
     @question.odh = false
